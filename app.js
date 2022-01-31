@@ -9,6 +9,7 @@ const save = document.getElementById('save-game');
 
 let stats = [];
 let games = [];
+let totals = [];
 
 // IMPURE RENDER FUNCTIONS
 // YOUR CODE MUST CALL THESE FUNCTIONS
@@ -41,22 +42,53 @@ form.addEventListener('submit', (e) => {
     // { player: 'Bob', points: 2 }
     // Hint -- create the object from the form, push it onto the stats array, then call renderStats
     const player = {
-        name: FormData.get('name');
-        points=
+        player: playerData.get('player'),
+        points: playerData.get('points'),
     };
+    stats.push(player);
+    // eslint-disable-next-line no-console
+    console.log(stats);
+    renderStats();
+    renderGames();
+    // playerData.reset();
 });
 
 remove.addEventListener('click', () => {
     // Step 2 -- add code to allow users to remove the most recent stat
     // Hint -- how do you remove an element from an array?
     // Hint -- how can we rerender the stats using a function above?
+    stats.pop();
+    renderStats();
+    renderGames();
 });
 
 save.addEventListener('click', () => {
-    // Step 3 - add code to allow users to save the state
+    // Step 3 - add code to allow users to save the stats
+    // let sum = 0;
     // Loop through the list of stats and add up the total points scored
-    // Create a new object with the game number and the total points
-    // { number: games.length + 1, totalPoints: totalPoints }
-    // Push the new object onto the games array then call renderGames
-    // reset the stats with resetStats
+    // for (let stat of stats) {
+    let sum = 0;
+    for (let i = 0; i < stats.length; i++) {
+        sum = stats[i];
+        console.log(stats);
+    }
+    // const total = {
+    //     number: gameData.get('number'),
+    //     totalPoints: gameData.get('totalPoints'),
+    // };
+
+    // totals.push(total);
+    // // console.log(totals);
+    // renderGames();
+    // resetStats();
 });
+// Create a new object with the game number and the total points
+// { number: games.length + 1, totalPoints: totalPoints }
+// Push the new object onto the games array then call renderGames
+// reset the stats with resetStats
+
+// reset.addEventListener('click', () => {
+//     stats = [];
+//     renderStats();
+//     renderGames();
+// });
