@@ -34,6 +34,7 @@ function resetStats() {
 }
 
 form.addEventListener('submit', (e) => {
+    e.preventDefault();
     // Step 1 - add code to track each submission to the stats
     // Create an object to "model" you statistic like the following:
     // { player: 'Bob', points: 2 }
