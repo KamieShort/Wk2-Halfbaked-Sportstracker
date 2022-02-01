@@ -9,7 +9,6 @@ const save = document.getElementById('save-game');
 
 let stats = [];
 let games = [];
-let totals = [];
 
 // IMPURE RENDER FUNCTIONS
 // YOUR CODE MUST CALL THESE FUNCTIONS
@@ -64,31 +63,25 @@ remove.addEventListener('click', () => {
 
 save.addEventListener('click', () => {
     // Step 3 - add code to allow users to save the stats
-    // let sum = 0;
     // Loop through the list of stats and add up the total points scored
-    // for (let stat of stats) {
     let sum = 0;
-    for (let i = 0; i < stats.length; i++) {
-        sum = stats[i];
-        console.log(stats);
-    }
-    // const total = {
-    //     number: gameData.get('number'),
-    //     totalPoints: gameData.get('totalPoints'),
-    // };
 
-    // totals.push(total);
-    // // console.log(totals);
-    // renderGames();
-    // resetStats();
+    for (let stat of stats) {
+        const numStat = Number(stat.points);
+        sum = numStat + sum;
+    }
+
+    const game = {
+        number: games.length + 1,
+        totalPoints: sum,
+    };
+    games.push(game);
+    renderGames();
+    resetStats();
+    // const li = renderGames('game');
+    // gameList.appendChild(li);
 });
 // Create a new object with the game number and the total points
 // { number: games.length + 1, totalPoints: totalPoints }
 // Push the new object onto the games array then call renderGames
 // reset the stats with resetStats
-
-// reset.addEventListener('click', () => {
-//     stats = [];
-//     renderStats();
-//     renderGames();
-// });
